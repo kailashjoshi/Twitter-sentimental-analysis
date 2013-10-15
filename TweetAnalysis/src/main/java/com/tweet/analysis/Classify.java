@@ -21,7 +21,7 @@ public class Classify {
 		try {
 
 			lmc = (LMClassifier) AbstractExternalizable.readObject(new File(
-					"/Users/KR/Desktop/TweetAnalysis/classifier.txt"));
+					"/Path/to/you/classify.txt/file/classifier.txt"));
 			categories = lmc.categories();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
