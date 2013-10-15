@@ -17,7 +17,7 @@ Pre-requisite for running this program
 ============================
 ```
 1. Install Mongodb and start mongodb with the data downloaded from above
-2. For example ./mongod --dbpath data/db
+   For example ./mongod --dbpath data/db
 2. Install Hadoop cluster for running MapReduce Job and start the cluster
 3. Install Spring Tool Suite because the program is written on Spring Data
 4. Install Maven
