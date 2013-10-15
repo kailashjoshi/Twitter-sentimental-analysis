@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:hadoop="http://www.springframework.org/schema/hadoop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/hadoop http://www.springframework.org/schema/hadoop/spring-hadoop.xsd">
+    
+	<context:property-placeholder location="hadoop.properties" />
+	<!-- Configuration of hdfs url and job tracker url -->
+	<hadoop:configuration>
+		fs.default.name=${fs.name}
+		mapred.job.tracker=${mp.jt}
+	</hadoop:configuration>
+
+	<hadoop:job id="tweetanalysis" input-path="${input.path}"
+		output-path="${output.path}" jar="classpath:/TweetAnalysis-0.0.1-SNAPSHOT.jar"
+		mapper="com.tweet.analysis.Map" reducer="com.tweet.analysis.Reduce" />
+
+	<hadoop:script id="setupScript" location="files-to-hdfs.groovy">
+		<hadoop:property name="localSourceFile"
+			value="output.txt" />
+		<hadoop:property name="inputDir" value="${input.path}" />
+		<hadoop:property name="outputDir" value="${output.path}" />
+	</hadoop:script>
+
+	<hadoop:job-runner id="runner" run-at-startup="true"
+		pre-action="setupScript" job-ref="tweetanalysis" />
+</beans>
