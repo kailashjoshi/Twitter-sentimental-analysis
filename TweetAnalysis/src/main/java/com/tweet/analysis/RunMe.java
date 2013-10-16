@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -52,7 +53,7 @@ public class RunMe {
 	public static void main(String[] args) {
 
 		@SuppressWarnings({ "resource" })
-		ApplicationContext cntx = new GenericXmlApplicationContext(
+		BeanFactory cntx = new GenericXmlApplicationContext(
 				"mongo-context.xml");
 		MongoOperations operation = cntx.getBean("mongoTemplate",
 				MongoOperations.class);// Connects to mongodb
