@@ -13,5 +13,7 @@
 		<constructor-arg ref="mongo" />
 		<constructor-arg value="Obamacare" /> <!-- Connection to a databse name Obamacare in mongodb -->
 	</bean>
+	<!-- Model Bean -->
+	<bean id="training" class="com.tweet.analysis.Model"/>
 
 </beans>
