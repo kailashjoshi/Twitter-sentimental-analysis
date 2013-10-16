@@ -85,7 +85,7 @@ public class RunMe {
 			e.printStackTrace();
 		}
 
-		Model buildModel = new Model();
+		Model buildModel = (Model)cntx.getBean("training"); //dependency injection
 		buildModel.train(); // creating model to classify whether tweet is
 							// positive or negative
 		RunMe.startMapReduce();
