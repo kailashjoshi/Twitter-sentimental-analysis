@@ -66,17 +66,7 @@ public class RunMe {
 					"text")) { //"dataset" parameter is the name of the collection
 				               // "text" parameter is text record inside the Json object that we want to extract
 				try {
-					writer.write(RunMe.removeUrl(tweet.toString()) + "\n");// Clean
-																			// tweets
-																			// and
-																			// Stores
-																			// all
-																			// tweets
-																			// from
-																			// mongodb
-																			// to
-																			// Text
-																			// file
+					writer.write(RunMe.removeUrl(tweet.toString()) + "\n");// Clean															// file
 				} catch (Exception e) {
 					continue;
 				}
